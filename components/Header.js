@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { SearchIcon } from "@heroicons/react/outline";
+import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
+import { HomeIcon } from "@heroicons/react/solid";
 
 function Header() {
   return (
-    <div className="flex items-center justify-between max-w-6xl pt-5">
+    <div className="flex items-center justify-between max-w-6xl pt-6 mx-4 xl:mx-auto">
       {/* Left */}
       <div className="realtive hidden lg:inline-grid cursor-pointer">
         <Image
@@ -33,7 +34,15 @@ function Header() {
         />
       </div>
       {/* Right */}
-      <h1>Right side</h1>
+      <div className="flex space-x-4 items-center">
+        <HomeIcon className="hidden lg:inline-flex h-6 cursor-pointer hover:scale-125 transition-transfrom duration-200 ease-out" />
+        <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transfrom duration-200 ease-out" />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB3_XdQSkv2yXWO_Aptqjv8GqYSWv7p0ts7w&usqp=CAU"
+          alt="user-image"
+          className="h-10 rounded-full cursor-pointer"
+        />
+      </div>
     </div>
   );
 }
