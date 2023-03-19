@@ -14,8 +14,8 @@ function Posts() {
       id: "2",
       username: "maryjane",
       userImg:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9YH7CDLd9G4ED5hviEwI3G-nre0sevH6cCw&usqp=CAU",
-      img: "https://static.wikia.nocookie.net/spiderman-films/images/8/85/Mary_Jane_Watson_%28Kirsten_Dunst%29.jpg/revision/latest?cb=20210601233728",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlokgUbcG28rFhrRJ5Odq6eAYp-372aLDq4g&usqp=CAU",
+      img: "https://i0.wp.com/www.sinembargo.mx/wp-content/uploads/2021/05/maryjane2.jpeg?fit=1100%2C580&quality=80&strip=all&ssl=1",
       caption: "New style",
     },
   ];
