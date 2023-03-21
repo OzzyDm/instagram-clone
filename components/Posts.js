@@ -8,7 +8,7 @@ function Posts() {
       userImg:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB3_XdQSkv2yXWO_Aptqjv8GqYSWv7p0ts7w&usqp=CAU",
       img: "https://insomniac.games/wp-content/uploads/2018/09/Spider-Man_PS4_Selfie_Photo_Mode_LEGAL.jpg",
-      caption: "Selfie",
+      caption: "I love NYC!",
     },
     {
       id: "2",
