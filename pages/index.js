@@ -1,5 +1,6 @@
 import Feed from "@/components/Feed";
 import Header from "@/components/Header";
+import UploadModal from "@/components/UploadModal";
 import Head from "next/head";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <Header />
       <Feed />
+      <UploadModal />
     </div>
   );
 }

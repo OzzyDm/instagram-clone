@@ -2,6 +2,8 @@ import Image from "next/image";
 import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRecoilState } from "recoil";
+import { modalState } from "@/atom/modalAtom";
 
 function Header() {
   const { data: session } = useSession();
