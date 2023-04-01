@@ -7,7 +7,8 @@ import { modalState } from "@/atom/modalAtom";
 
 function Header() {
   const { data: session } = useSession();
-  console.log(session);
+  const [open, setOpen] = useRecoilState(modalState);
+
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-30">
       <div className="flex items-center justify-between max-w-6xl pt-6 pb-6 mx-4 xl:mx-auto">
@@ -44,7 +45,10 @@ function Header() {
           <HomeIcon className="hidden lg:inline-flex h-6 cursor-pointer hover:scale-125 transition-transfrom duration-200 ease-out" />
           {session ? (
             <>
-              <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transfrom duration-200 ease-out" />
+              <PlusCircleIcon
+                onClick={() => setOpen(true)}
+                className="h-6 cursor-pointer hover:scale-125 transition-transfrom duration-200 ease-out"
+              />
               <img
                 onClick={signOut}
                 src={session.user.image}
