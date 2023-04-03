@@ -2,26 +2,57 @@ import { modalState } from "@/atom/modalAtom";
 import { useRecoilState } from "recoil";
 import Modal from "react-modal";
 import { CameraIcon } from "@heroicons/react/outline";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function UploadModal() {
   const [open, setOpen] = useRecoilState(modalState);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  function addImageToPost(event) {
+    const reader = new FileReader();
+    if (event.target.files[0]) {
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    reader.onload = (readerEvent) => {
+      setSelectedFile(readerEvent.target.result);
+    };
+  }
+
   const filePickerRef = useRef(null);
 
   return (
     <div>
       {open && (
         <Modal
-          className="max-w-lg w-[90%] p-6 h-[300px] absolute top-56 left-[50%] translate-x-[-50%] bg-white border-2 rounded-md shadow-md"
+          className="max-w-lg w-[90%] p-6 absolute top-56 left-[50%] translate-x-[-50%] bg-white border-2 rounded-md shadow-md"
           isOpen={open}
-          onRequestClose={() => setOpen(false)}
+          onRequestClose={() => {
+            setOpen(false);
+            setSelectedFile(null);
+          }}
         >
           <div className="flex flex-col justify-center items-center h-[100%]">
-            <CameraIcon
-              onClick={() => filePickerRef.current.click()}
-              className="cursor-pointer h-14 bg-red-200 p-2 rounded-full border-2 text-red-500"
+            {selectedFile ? (
+              <img
+                onClick={() => setSelectedFile(null)}
+                src={selectedFile}
+                alt="selected file"
+                className="w-full max-h-[250px] object-cover cursor-pointer"
+              />
+            ) : (
+              <CameraIcon
+                onClick={() => filePickerRef.current.click()}
+                className="cursor-pointer h-14 bg-red-200 p-2 rounded-full border-2 text-red-500"
+              />
+            )}
+
+            <input
+              type="file"
+              hidden
+              ref={filePickerRef}
+              onChange={addImageToPost}
             />
-            <input type="file" hidden ref={filePickerRef} />
             <input
               type="text"
               maxLength="150"
