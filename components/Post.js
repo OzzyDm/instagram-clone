@@ -5,8 +5,11 @@ import {
   BookmarkIcon,
   EmojiHappyIcon,
 } from "@heroicons/react/outline";
+import { useSession } from "next-auth/react";
 
 function Post({ img, userImg, caption, username, id }) {
+  const { data: session } = useSession();
+
   return (
     <div className="bg-white my-7 border rounded-md">
       {/* PostHeader */}
@@ -24,13 +27,16 @@ function Post({ img, userImg, caption, username, id }) {
       <img className="object-cover w-full" src={img} />
 
       {/* PostButtons */}
-      <div className="flex justify-between p-4">
-        <div className="flex space-x-4">
-          <HeartIcon className="btn" />
-          <ChatIcon className="btn" />
+
+      {session && (
+        <div className="flex justify-between p-4">
+          <div className="flex space-x-4">
+            <HeartIcon className="btn" />
+            <ChatIcon className="btn" />
+          </div>
+          <BookmarkIcon className="btn" />
         </div>
-        <BookmarkIcon className="btn" />
-      </div>
+      )}
 
       {/* PostComments */}
 
@@ -40,15 +46,17 @@ function Post({ img, userImg, caption, username, id }) {
       </p>
 
       {/* PostInputBox */}
-      <form className="flex items-center p-4">
-        <EmojiHappyIcon className="h-7" />
-        <input
-          type="text"
-          placeholder="Enter your comment..."
-          className="border-none flex-1 focus:ring-0"
-        />
-        <button className="text-blue-400 font-bold">Post</button>
-      </form>
+      {session && (
+        <form className="flex items-center p-4">
+          <EmojiHappyIcon className="h-7" />
+          <input
+            type="text"
+            placeholder="Enter your comment..."
+            className="border-none flex-1 focus:ring-0"
+          />
+          <button className="text-blue-400 font-bold">Post</button>
+        </form>
+      )}
     </div>
   );
 }
